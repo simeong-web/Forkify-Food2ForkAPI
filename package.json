@@ -7,7 +7,6 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "node index.js"
-    /*webpack-dev-server --mode development --open*/
   },
   "author": "Simeon Georgiev",
   "license": "ISC",
