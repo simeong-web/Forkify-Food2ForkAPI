@@ -28,10 +28,10 @@
   "engines": {
     "node": "^10.16.3"
   },
-  "keywords": {
+  "keywords": [
     "node",
     "heroku"
-  },
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/simeong-web/Forkify-Food2ForkAPI"
