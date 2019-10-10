@@ -1,0 +1,6 @@
+{
+    "name": "forkify",
+    "description": "forkify project",
+    "repository": "https://github.com/simeong-web/Forkify-Food2ForkAPI",
+    "keywords": ["node", "heroku"]
+}
