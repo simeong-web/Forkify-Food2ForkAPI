@@ -29,7 +29,7 @@
     "babel-polyfill": "^6.26.0",
     "fractional": "^1.0.0",
     "uniqid": "^4.1.1",
-    "express": "^4.16.4",
+    "express": "^4.16.4"
   },
   "engines": {
     "node": "^10.16.3"
