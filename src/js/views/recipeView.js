@@ -1,29 +1,20 @@
+import fracty from 'fracty'
 import { elements } from './base';
-import { Fraction } from 'fractional';
+
 
 export const clearRecipe = () => {
     elements.recipe.innerHTML = '';
 };
+
+//using node package to turn decimals into fractions
 const formatCount = count => {
-    if (count) {
-        // count = 2.5 --> 5/2 --> 2 1/2
-        // count = 0.5 --> 1/2
-        const newCount = Math.round(count * 10000) / 10000;
-        const [int, dec] = newCount.toString().split('.').map(el => parseInt(el, 10));
-
-        if (!dec) return newCount;
-
-        if (int === 0) {
-            const fr = new Fraction(newCount);
-            return `${fr.numerator}/${fr.denominator}`;
-        } else {
-            const fr = new Fraction(newCount - int);
-            return `${int} ${fr.numerator}/${fr.denominator}`;
-        }
-    }
-    return '?';
+  if (count) {
+    return `${fracty(count)}`;
+  }
+  return '?';
 };
 
+//template for one recipe
 const createIngredient = ingredient => `
     <li class="recipe__item">
         <svg class="recipe__icon">
@@ -45,7 +36,6 @@ export const renderRecipe = (recipe, isLiked) => {
                 <span>${recipe.title}</span>
             </h1>
         </figure>
-
         <div class="recipe__details">
             <div class="recipe__info">
                 <svg class="recipe__info-icon">
@@ -60,7 +50,6 @@ export const renderRecipe = (recipe, isLiked) => {
                 </svg>
                 <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
                 <span class="recipe__info-text"> servings</span>
-
                 <div class="recipe__info-buttons">
                     <button class="btn-tiny btn-decrease">
                         <svg>
@@ -73,7 +62,6 @@ export const renderRecipe = (recipe, isLiked) => {
                         </svg>
                     </button>
                 </div>
-
             </div>
             <button class="recipe__love">
                 <svg class="header__likes">
@@ -81,12 +69,10 @@ export const renderRecipe = (recipe, isLiked) => {
                 </svg>
             </button>
         </div>
-
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
                 ${recipe.ingredients.map(el => createIngredient(el)).join('')}
             </ul>
-
             <button class="btn-small recipe__btn recipe__btn--add">
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-shopping-cart"></use>
@@ -94,7 +80,6 @@ export const renderRecipe = (recipe, isLiked) => {
                 <span>Add to shopping list</span>
             </button>
         </div>
-
         <div class="recipe__directions">
             <h2 class="heading-2">How to cook it</h2>
             <p class="recipe__directions-text">
@@ -106,7 +91,6 @@ export const renderRecipe = (recipe, isLiked) => {
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-triangle-right"></use>
                 </svg>
-
             </a>
         </div>
     `;
